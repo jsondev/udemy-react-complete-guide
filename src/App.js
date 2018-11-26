@@ -16,7 +16,7 @@ class App extends Component {
      *  Updates a single person
      */
     nameChangedHandler = (event, id) => {
-        
+
         //  finds the single person to update by their id
         const personIndex = this.state.persons.findIndex(p => {
             return p.id === id;
@@ -46,15 +46,24 @@ class App extends Component {
     }
 
     /**
-     * Deletes a single person
+     * Deletes a single person by taking in an unique identifier
      */
     deletePersonHandler = (personIndex) => {
         // const persons = this.state.persons.slice();
+
+        // creates a copy of the persons array
         const persons = [...this.state.persons];
+
+        // cuts the person out of the array
         persons.splice(personIndex, 1);
+
+        // updates the array
         this.setState({ persons: persons });
     }
 
+    /**
+     * Toggles adding and removing the list of people from the view
+     */
     togglePersonsHandler = () => {
         const doesShow = this.state.showPersons;
         this.setState({ showPersons: !doesShow });
